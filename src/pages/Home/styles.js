@@ -11,17 +11,7 @@ export const Header = styled.div`
 
     margin-bottom: 25px;
 
-    > input {
-        font-size: 16px;
-
-        padding: 10px 40px;
-
-        border-radius: 45px;
-        background-color: ${props => props.theme.colors.tertiary};
-        box-shadow: 0 2px 4px 0px rgba(0, 0, 0, .2);
-
-        width: 62%;
-    }
+    height: 128px;
 `;
 
 export const Title = styled.h1`
@@ -31,5 +21,60 @@ export const Title = styled.h1`
     margin: 30px 0;
 `;
 
+export const InputBlock = styled.div`
+    width: 62%;
+    
+    border-radius: 45px;
+    background-color: ${props => props.theme.colors.tertiary};
+    box-shadow: 0 2px 4px 0px rgba(0, 0, 0, .2);
+
+    display: flex;
+    justify-content: space-between;
+
+    > input {
+        font-size: 16px;
+        
+        background-color: transparent;
+
+        padding: 10px 40px;
+
+        width: 100%;
+    }
+
+    > button {
+        font-size: 20px;
+
+        color: ${props => props.theme.colors.black};
+
+        background-color: transparent;
+
+        width: 55px;
+    }
+`;
+
 export const ListContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    column-gap: 40px;
+    row-gap: 34px;
+
+    padding: 28px 70px;
+
+    height: calc(100vh - 215px);
+
+    overflow-y: scroll;
+
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: ${props => props.theme.colors.secondary};
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: ${props => props.theme.colors.tertiary};
+    }
 `;
