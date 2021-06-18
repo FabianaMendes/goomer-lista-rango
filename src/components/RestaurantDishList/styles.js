@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    background-color: blue;
     grid-area: LC;
+`;
+
+export const ListContainer = styled.div`
+    width: 832px;
+
+    margin-top: 24px;
 `;

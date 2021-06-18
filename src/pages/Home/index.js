@@ -1,21 +1,20 @@
 import React from 'react';
 
 import RestaurantCard from '../../components/RestaurantCard';
+import InputContainer from '../../components/InputContainer';
 
-import { Container, Header, Title, InputBlock, ListContainer } from './styles';
-
-import { BiSearch } from 'react-icons/bi';
+import { Container, Header, Title, ListContainer } from './styles';
 
 export default function Home() {
     return (
         <Container>
             <Header>
                 <Title>Bem-vindo ao Lista Rango</Title>
-                <InputBlock>
-                    <label>Buscar estabelecimento</label>
-                    <input type="search"/>
-                    <button type="submit"><BiSearch/></button>
-                </InputBlock>
+                <InputContainer 
+                    inputColor="#FBFBFB" 
+                    title="Buscar estabelecimento"
+                    width="840px"
+                />
             </Header>
             <ListContainer>
                 <RestaurantCard/>

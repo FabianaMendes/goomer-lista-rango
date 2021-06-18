@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { GridLayout, Aside, ListContainer } from './styles';
+import { GridLayout, Aside } from './styles';
 import RestaurantPageHeader from '../../components/RestaurantPageHeader';
 import RestaurantDishList from '../../components/RestaurantDishList';
 
