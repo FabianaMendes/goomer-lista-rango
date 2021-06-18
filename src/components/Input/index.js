@@ -4,7 +4,7 @@ import { InputBlock } from './styles';
 
 import { BiSearch } from 'react-icons/bi';
 
-export default function InputContainer({title, inputColor, width}){
+export default function Input({title, inputColor, width}){
     return(
         <InputBlock inputColor={inputColor} width={width}>
             <label>{title}</label>

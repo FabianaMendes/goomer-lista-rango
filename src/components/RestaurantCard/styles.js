@@ -11,6 +11,8 @@ export const Container = styled.div`
 
     &:hover {
         cursor: pointer;
+        box-shadow: 0 5px 10px 0px rgba(0, 0, 0, .25);
+        transform: scale(1.01);
     }
 
     > span {

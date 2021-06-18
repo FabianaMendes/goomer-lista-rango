@@ -2,7 +2,7 @@ import React from 'react';
 
 import { GridLayout, Aside } from './styles';
 import RestaurantPageHeader from '../../components/RestaurantPageHeader';
-import RestaurantDishList from '../../components/RestaurantDishList';
+import RestaurantMealList from '../../components/RestaurantMealList';
 
 
 export default function RestaurantPage() {
@@ -10,7 +10,7 @@ export default function RestaurantPage() {
         <GridLayout>
             <RestaurantPageHeader/>
             <Aside/>
-            <RestaurantDishList/>
+            <RestaurantMealList/>
         </GridLayout>
     );
 }

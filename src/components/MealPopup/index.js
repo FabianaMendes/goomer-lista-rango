@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function DishPopup(props) {
+export default function MealPopup(props) {
     return (props.trigger) ? (
 
         <div onClick={() => props.setTrigger(false)}>

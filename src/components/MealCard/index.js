@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 import { 
     Container, 
-    DishImg, 
-    DishData, 
+    MealImg, 
+    MealData, 
     TagPromo, 
     Title, 
     Description, 
@@ -12,19 +12,19 @@ import {
     RegularPrice 
 } from './styles';
 
-import DishPopup from '../DishPopup';
+import MealPopup from '../MealPopup';
 
 import { FaAward } from 'react-icons/fa';
 
-export default function DishCard({dishImg, promo, title, description, promotionPrice, regularPrice}) {
+export default function MealCard({mealImg, promo, title, description, promotionPrice, regularPrice}) {
     
     const [popup, setPopup] = useState(false);
 
     return(
         <>
         <Container onClick={() => setPopup(true)}>
-            <DishImg src={dishImg} alt="dish-img"/>
-            <DishData>
+            <MealImg src={mealImg} alt="meal-img"/>
+            <MealData>
                 <TagPromo><FaAward/>{promo}</TagPromo>
                 <Title>{title}</Title>
                 <Description>
@@ -34,9 +34,9 @@ export default function DishCard({dishImg, promo, title, description, promotionP
                     <PromotionPrice>R$ {promotionPrice}</PromotionPrice>
                     <RegularPrice>R$ {regularPrice}</RegularPrice>
                 </Prices>
-            </DishData>
+            </MealData>
         </Container>
-        <DishPopup
+        <MealPopup
             trigger={popup}
             setTrigger={setPopup}
         />

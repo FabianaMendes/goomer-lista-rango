@@ -16,11 +16,11 @@ export const Container = styled.div`
     } 
 `;
 
-export const DishImg = styled.img`
+export const MealImg = styled.img`
     height: 115px;
 `;
 
-export const DishData = styled.div`
+export const MealData = styled.div`
     position: relative;
 
     height: 100%;

@@ -1,22 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import DishCard from '../DishCard';
+import MealCard from '../MealCard';
 
-import { Container, Title, DishCardsContainer } from './styles';
+import { Container, Title, MealCardsContainer } from './styles';
 
-import { FaChevronDown } from 'react-icons/fa';
-import dishImg from '../../assets/dish-img.png';
+import { FaChevronDown, FaChevronRight } from 'react-icons/fa';
+import mealImg from '../../assets/dish-img.png';
 
-export default function SelectDish({title}) {
+export default function MealCategory({title}) {
+
+    const [cardsList, setCardsList] = useState(false);
+
     return(
         <Container>
-            <Title>
+            <Title onClick={() => setCardsList(!cardsList)}>
                 {title}
-                <button><FaChevronDown/></button>
+                <button>
+                    {cardsList ? <FaChevronDown/> : <FaChevronRight/>}
+                </button>
             </Title>
-            <DishCardsContainer>
-                <DishCard 
-                    dishImg={dishImg}
+            <MealCardsContainer className={cardsList ? "" : "hidden"}>
+                <MealCard 
+                    mealImg={mealImg}
                     promo="Promo Almoço"
                     title="Nome do Prato"
                     description="Lorem ipsum dolor sit amet, 
@@ -24,8 +29,8 @@ export default function SelectDish({title}) {
                     promotionPrice="19,90"
                     regularPrice="19,90"
                 />
-                <DishCard 
-                    dishImg={dishImg}
+                <MealCard 
+                    mealImg={mealImg}
                     promo="Promo Almoço"
                     title="Nome do Prato"
                     description="Lorem ipsum dolor sit amet, 
@@ -33,8 +38,8 @@ export default function SelectDish({title}) {
                     promotionPrice="19,90"
                     regularPrice="19,90"
                 />
-                <DishCard 
-                    dishImg={dishImg}
+                <MealCard 
+                    mealImg={mealImg}
                     promo="Promo Almoço"
                     title="Nome do Prato"
                     description="Lorem ipsum dolor sit amet, 
@@ -42,7 +47,7 @@ export default function SelectDish({title}) {
                     promotionPrice="19,90"
                     regularPrice="19,90"
                 />
-            </DishCardsContainer>
+            </MealCardsContainer>
         </Container>
     )
 }

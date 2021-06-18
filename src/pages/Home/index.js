@@ -1,7 +1,7 @@
 import React from 'react';
 
 import RestaurantCard from '../../components/RestaurantCard';
-import InputContainer from '../../components/InputContainer';
+import Input from '../../components/Input';
 
 import { Container, Header, Title, ListContainer } from './styles';
 
@@ -10,7 +10,7 @@ export default function Home() {
         <Container>
             <Header>
                 <Title>Bem-vindo ao Lista Rango</Title>
-                <InputContainer 
+                <Input 
                     inputColor="#FBFBFB" 
                     title="Buscar estabelecimento"
                     width="840px"

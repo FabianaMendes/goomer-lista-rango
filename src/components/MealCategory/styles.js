@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     width: 100%;
+
+    .hidden {
+        display: none;
+    }
 `;
 
 export const Title = styled.div`
@@ -26,7 +30,7 @@ export const Title = styled.div`
     }
 `;
 
-export const DishCardsContainer = styled.div`
+export const MealCardsContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     row-gap: 24px;
@@ -34,3 +38,4 @@ export const DishCardsContainer = styled.div`
 
     padding: 24px 0;
 `;
+
