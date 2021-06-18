@@ -25,6 +25,7 @@ export const Container = styled.div`
 
         background-color: ${props => props.theme.colors.success};
         color: ${props => props.theme.colors.white};
+        box-shadow: 0 1px 2px 0px rgba(0, 0, 0, .2);
 
         font-size: 8px;
         font-weight: 700;

@@ -31,14 +31,31 @@ export const InputBlock = styled.div`
     display: flex;
     justify-content: space-between;
 
+    > label {
+        width: 260px;
+
+        display: flex;
+        align-items: center;
+
+        background-color: ${props => props.theme.colors.white};
+
+        border-radius: 45px 0 0 45px;
+
+        padding-left: 38px;
+
+        font-size: 16px;
+
+        font-weight: 500;
+    }
+
     > input {
         font-size: 16px;
-        
+
         background-color: transparent;
 
-        padding: 10px 40px;
+        padding: 10px;
 
-        width: 100%;
+        width: 65%;
     }
 
     > button {
@@ -60,21 +77,4 @@ export const ListContainer = styled.div`
     row-gap: 34px;
 
     padding: 28px 70px;
-
-    height: calc(100vh - 215px);
-
-    overflow-y: scroll;
-
-    ::-webkit-scrollbar {
-        width: 10px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background-color: ${props => props.theme.colors.secondary};
-        border-radius: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-        background-color: ${props => props.theme.colors.tertiary};
-    }
 `;

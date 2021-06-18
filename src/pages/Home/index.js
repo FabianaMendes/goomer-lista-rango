@@ -12,7 +12,8 @@ export default function Home() {
             <Header>
                 <Title>Bem-vindo ao Lista Rango</Title>
                 <InputBlock>
-                    <input type="search" placeholder="Buscar estabelecimento"/>
+                    <label>Buscar estabelecimento</label>
+                    <input type="search"/>
                     <button type="submit"><BiSearch/></button>
                 </InputBlock>
             </Header>
