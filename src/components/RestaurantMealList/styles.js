@@ -7,5 +7,5 @@ export const Container = styled.div`
 export const OptionsContainer = styled.div`
     width: 832px;
 
-    margin-top: 24px;
+    margin: 24px 0;
 `;
