@@ -2,17 +2,16 @@ import React from 'react';
 
 import { Container, Card, Logo, RestaurantData, Title, Subtitle } from './styles';
 
-import logo from '../../assets/logo-rest.png';
 
-export default function RestaurantCard() {
+export default function RestaurantCard({title, subtitle, status, logoImg, onClick}) {
     return(
         <Container>
-            <span>Aberto agora</span>
-            <Card>
-                <Logo src={logo} alt="logo-rest.png"/>
+            <span>{status}</span>
+            <Card onClick={onClick}>
+                <Logo src={logoImg} alt={logoImg}/>
                 <RestaurantData>
-                    <Title>Nome do Restaurante</Title>
-                    <Subtitle>Endereço do Restaurante</Subtitle>
+                    <Title>{title}</Title>
+                    <Subtitle>{subtitle}</Subtitle>
                 </RestaurantData>
             </Card>
         </Container>

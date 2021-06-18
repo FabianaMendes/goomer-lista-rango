@@ -1,36 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { fetchRestaurants } from '../../api';
 
-import RestaurantCard from '../../components/RestaurantCard';
-import Input from '../../components/Input';
+import { Container } from './styles';
 
-import { Container, Header, Title, ListContainer } from './styles';
+import RestaurantList from '../../components/RestaurantsList';
 
 export default function Home() {
+
+    const [restaurants, setRestaurants] = useState([]);
+
+    useEffect(() => {
+        fetchRestaurants()
+          .then(response => {
+            setRestaurants(response.data)
+            console.log(response.data)
+          })
+          .catch(() => {
+            alert('Erro ao listar restaurantes');
+        })
+    }, []);
+    
+    
+
     return (
         <Container>
-            <Header>
-                <Title>Bem-vindo ao Lista Rango</Title>
-                <Input 
-                    inputColor="#FBFBFB" 
-                    title="Buscar estabelecimento"
-                    width="840px"
-                />
-            </Header>
-            <ListContainer>
-                <RestaurantCard/>
-                <RestaurantCard/>
-                <RestaurantCard/>
-                <RestaurantCard/>
-                <RestaurantCard/>
-                <RestaurantCard/>
-                <RestaurantCard/>
-                <RestaurantCard/>
-                <RestaurantCard/>
-                <RestaurantCard/>
-                <RestaurantCard/>
-                <RestaurantCard/>
-                <RestaurantCard/>
-            </ListContainer>
+            <RestaurantList
+                restaurants={restaurants}
+                onClick={() => {}}
+            />
         </Container>
     );
 }

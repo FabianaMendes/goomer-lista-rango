@@ -47,7 +47,10 @@ export const Card = styled.div`
 
 export const Logo = styled.img`
     height: 100px;
+    width: 100px;
     margin-right: 25px;
+
+    border-radius: 4px 0 0 4px;
 `;
 
 export const RestaurantData = styled.div`
