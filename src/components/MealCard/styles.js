@@ -1,8 +1,12 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.div``;
+
+export const Card = styled.div`
     height: 115px;
     width: 386px;
+
+    border-radius: 4px;
 
     box-shadow: 0 4px 8px 0px rgba(0, 0, 0, .2);
 
@@ -18,12 +22,16 @@ export const Container = styled.div`
 
 export const MealImg = styled.img`
     height: 115px;
+    width: 115px;
+
+    border-radius: 4px 0 0 4px;
 `;
 
 export const MealData = styled.div`
     position: relative;
 
     height: 100%;
+    width: 271px;
 
     padding: 15px;
 
@@ -42,7 +50,7 @@ export const TagPromo = styled.div`
     color: ${props => props.theme.colors.white};
 
     border-radius: 11px;
-    
+
     font-size: 8px;
     font-weight: 700;
 
@@ -57,9 +65,11 @@ export const TagPromo = styled.div`
     }
 `;
 
-export const Title = styled.h1`
+export const MealTitle = styled.h1`
     font-size: 16px;
     font-weight: 500;
+
+    width: 60%;
 `;
 
 export const Description = styled.p`

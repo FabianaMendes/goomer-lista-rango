@@ -8,10 +8,10 @@ import Routes from './routes';
 
 function App() {
   return (
-    <ThemeProvider theme={standard}>
-      <GlobalStyles/>
-      <Routes/>
-    </ThemeProvider>
+      <ThemeProvider theme={standard}>
+        <GlobalStyles/>
+        <Routes/>
+      </ThemeProvider>
   );
 }
 

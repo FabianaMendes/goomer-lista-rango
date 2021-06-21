@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { formatCurrency } from '../../utils/helpers';
 
 import { 
-    Container,
+    PopUp,
     Card, 
     MealImg, 
     MealData, 
@@ -14,9 +15,8 @@ import {
 } from './styles';
 
 import { FaTimes } from 'react-icons/fa';
-import mealImg from '../../assets/meal-img.png'
 
-export default function MealPopup(props) {
+export default function MealPopup({ trigger, setTrigger, title, image, description, price }) {
 
     const [counter, setCounter] = useState(1);
     
@@ -32,21 +32,19 @@ export default function MealPopup(props) {
         }
     } 
 
-    return (props.trigger) ? (
-
-        <Container >
+    return (trigger) ? (
+        <PopUp >
             <Card>
-                <button onClick={() => props.setTrigger(false)}>
+                <button onClick={() => setTrigger(false)}>
                     <FaTimes/>
                 </button>
-                <MealImg src={mealImg} alt="meal-img"/>
+                <MealImg src={image} alt={image}/>
                 <MealData>
-                    <Title>Nome do prato</Title>
+                    <Title>{title}</Title>
                     <Description>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        {description}
                     </Description>
-                    <Price>R$ 19,90</Price>
+                    <Price>{price}</Price>
                 </MealData>
                 <Footer>
                     <Counter>
@@ -54,12 +52,12 @@ export default function MealPopup(props) {
                             {counter}
                         <button onClick={handleEncrease}> + </button>
                     </Counter>
-                    <AddToCart>
-                        Adicionar <span>R$ 19,90</span>
+                    <AddToCart onClick={() => setTrigger(false)}>
+                        Adicionar <span>{price}</span>
                     </AddToCart>
                 </Footer>
             </Card>
-        </Container>
+        </PopUp>
 
         ) : "";
 }

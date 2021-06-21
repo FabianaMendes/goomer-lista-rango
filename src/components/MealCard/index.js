@@ -1,45 +1,73 @@
 import React, { useState } from 'react';
+import { useRestaurant } from '../../contexts/provider';
+import { formatCurrency } from '../../utils/helpers';
 
 import { 
-    Container, 
+    Container,
+    Card, 
     MealImg, 
     MealData, 
     TagPromo, 
-    Title, 
+    MealTitle, 
     Description, 
     Prices,
     PromotionPrice, 
-    RegularPrice 
+    RegularPrice  
 } from './styles';
 
 import MealPopup from '../MealPopup';
 
 import { FaAward } from 'react-icons/fa';
 
-export default function MealCard({mealImg, promo, title, description, promotionPrice, regularPrice}) {
-    
-    const [popup, setPopup] = useState(false);
+export default function MealCard({ category, searchTerm }) {
 
-    return(
+    const [popup, setPopup] = useState(false);
+    const { menu } = useRestaurant();
+
+    function filterMeals(item) {
+        if(item.group === category){
+            return item;
+        }
+    }
+
+    const mealList = menu.filter(filterMeals);
+    
+   
+    return (
         <>
-        <Container onClick={() => setPopup(true)}>
-            <MealImg src={mealImg} alt="meal-img"/>
-            <MealData>
-                <TagPromo><FaAward/>{promo}</TagPromo>
-                <Title>{title}</Title>
-                <Description>
-                    {description}
-                </Description>
-                <Prices>
-                    <PromotionPrice>R$ {promotionPrice}</PromotionPrice>
-                    <RegularPrice>R$ {regularPrice}</RegularPrice>
-                </Prices>
-            </MealData>
-        </Container>
-        <MealPopup
-            trigger={popup}
-            setTrigger={setPopup}
-        />
+        {mealList.filter((meal) => {
+            if(searchTerm === "") {
+                return mealList;
+            } else if (meal.name.toLowerCase().includes(searchTerm.toLowerCase())){
+                return meal;
+            }
+        }).map((element, index) => (
+            <Container key={index}>
+                <Card onClick={() => setPopup(true)} >
+                    <MealImg src={element.image} alt={element.image}/>
+                    <MealData>
+                        <TagPromo><FaAward/>Promo almoço</TagPromo>
+                        <MealTitle>{element.name}</MealTitle>
+                        <Description>
+                            {element.group}
+                        </Description>
+                        <Prices>
+                            <PromotionPrice>{element.price}</PromotionPrice>
+                            <RegularPrice>{element.price}</RegularPrice>
+                        </Prices>
+                    </MealData>
+                </Card>
+                <MealPopup
+                    key={element.name}
+                    trigger={popup}
+                    setTrigger={setPopup}
+                    image={element.image}
+                    title={element.name}
+                    description={element.group}
+                    price={element.price}
+                />
+            </Container>
+        ))}
         </>
-    );
-}
+    )
+};

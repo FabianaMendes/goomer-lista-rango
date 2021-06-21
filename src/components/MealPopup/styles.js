@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const PopUp = styled.div`
     background-color: rgba(0, 0, 0, 0.3);
 
     height: 100vh;
@@ -59,10 +59,14 @@ export const Card = styled.div`
 `;
 
 export const MealImg = styled.img`
+    height: 196px;
+    width: 553px;
 `;
 
 export const MealData = styled.div`
     position: relative;
+
+    width: 100%;
 `;
 
 export const Title = styled.h1`

@@ -3,15 +3,16 @@ import React from 'react';
 import { Container, Card, Logo, RestaurantData, Title, Subtitle } from './styles';
 
 
-export default function RestaurantCard({title, subtitle, status, logoImg, onClick}) {
+export default function RestaurantCard({ restaurant, onSelectRestaurant }) {
+
     return(
         <Container>
-            <span>{status}</span>
-            <Card onClick={onClick}>
-                <Logo src={logoImg} alt={logoImg}/>
+            <span>"Aberto agora"</span>
+            <Card onClick={() => onSelectRestaurant(restaurant)}>
+                <Logo src={restaurant.image} alt={restaurant.image}/>
                 <RestaurantData>
-                    <Title>{title}</Title>
-                    <Subtitle>{subtitle}</Subtitle>
+                    <Title>{restaurant.name}</Title>
+                    <Subtitle>{restaurant.address}</Subtitle>
                 </RestaurantData>
             </Card>
         </Container>
