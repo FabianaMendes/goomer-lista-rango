@@ -8,10 +8,9 @@ import RestaurantCard from '../../components/RestaurantCard';
 
 import { Container, Header, Title, ListContainer } from './styles';
 
-
 export default function Home() {
 
-    const [restaurants, setRestaurants] = useState([]);
+    const [restaurantsData, setRestaurantsData] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const { selectedRestaurant } = useRestaurant();
     const history = useHistory();
@@ -20,12 +19,12 @@ export default function Home() {
     useEffect(() => {
         async function loadRestaurants() {
             const response = await api.get('/restaurants');
-            setRestaurants(response.data);
+            setRestaurantsData(response.data);
         }
         loadRestaurants();
     }, []);
     
-    /**Envia as informações do restaurante escolhido para o provider */
+    /**Ao clicar, envia as informações do restaurante escolhido para o provider */
     function handleSelectRestaurant(restaurant) {
         const id = (restaurant.id)
         selectedRestaurant(restaurant, id)
@@ -35,31 +34,14 @@ export default function Home() {
     };
 
     /**Quando digitar no campo de busca, verifica se há restaurantes com o termo informado */ 
-    const filter = restaurants.filter((restaurant) => {
+    const filter = restaurantsData.filter((restaurant) => {
         if(searchTerm === "") {
-            return restaurants;
+            return restaurantsData;
         } else if(restaurant.name.toLowerCase().includes(searchTerm.toLowerCase())) {
             return restaurant;
         } 
     });
-
-    useEffect(() => {
-        const now = new Date;
-        const weekday = now.getDay()+1;
-        console.log(now, weekday);
-    }, []);
-
-
-    //const openTag = useMemo(() => {
-    //    return isOpen === true
-    //    ? {
-    //        title: 'Aberto Agora',
-    //        tagColor: '#2B0D61'
-    //    } : {
-    //        title: 'Fechado',
-    //        tagColor: '#B5ABD4'
-    //    }
-    //})
+    
 
     return (
         <Container>
@@ -78,7 +60,6 @@ export default function Home() {
                         key={index}
                         restaurant={restaurant}
                         onSelectRestaurant={handleSelectRestaurant}
-                        
                     />
                 ))}
             </ListContainer>

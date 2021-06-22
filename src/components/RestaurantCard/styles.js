@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 export const Container = styled.div`
     position: relative;
 
@@ -9,13 +10,16 @@ export const Container = styled.div`
     box-shadow: 0 2px 4px 0px rgba(0, 0, 0, .2);
     border-radius: 4px;
 
-    &:hover {
-        cursor: pointer;
-        box-shadow: 0 5px 10px 0px rgba(0, 0, 0, .25);
-        transform: scale(1.01);
-    }
+    cursor: pointer;
 
-    > span {
+    &:hover span {
+        box-shadow: 0 5px 10px 0px rgba(0, 0, 0, .25);
+        filter: brightness(0.95);
+    }
+`;
+
+export const StatusTag = styled.span`
+
         position: absolute;
         top: 0;
         right: 0;
@@ -23,9 +27,10 @@ export const Container = styled.div`
 
         display: flex;
         align-items: center;
+        justify-content: center;
         text-align: center;
 
-        background-color: ${props => props.theme.colors.success};
+        background-color: ${(props) => props.color}; /*Informação vem da Tag Aberto/Fechado*/ 
         color: ${props => props.theme.colors.white};
         box-shadow: 0 1px 2px 0px rgba(0, 0, 0, .2);
 
@@ -36,8 +41,6 @@ export const Container = styled.div`
 
         height: 48px;
         width: 48px;
-    }
-    
 `;
 
 export const Card = styled.div`
@@ -61,7 +64,7 @@ export const Title = styled.h1`
     font-weight: 500;
 `;
 
-export const Subtitle = styled.span`
+export const Subtitle = styled.p`
     font-size: 12px;
     font-weight: 400;
 `;
