@@ -24,24 +24,33 @@ export default function MealCard({ category, searchTerm }) {
     const [popup, setPopup] = useState(false);
     const { menu } = useRestaurant();
 
+    /**Compara a categoria recebida com a da refeição, se for igual retorna a refeição*/
     function filterMeals(item) {
         if(item.group === category){
             return item;
         }
-    }
+    };
 
+    /**Filtra as refeições que aparecerão no container, de acordo com a função filterMeals 
+     * Dessa forma só serão listadas as refeições correspondentes a cada categoria
+    */
     const mealList = menu.filter(filterMeals);
+
+    /**Função que verifica o termo de busca. Se houver ela devolve a lista de itens que 
+     * incluem o termo digitado, se não houver, retorna todos os itens
+    */
+    const filter = mealList.filter((meal) => {
+        if(searchTerm === "") {
+            return mealList;
+        } else if (meal.name.toLowerCase().includes(searchTerm.toLowerCase())){
+            return meal;
+        }
+    });
     
    
     return (
         <>
-        {mealList.filter((meal) => {
-            if(searchTerm === "") {
-                return mealList;
-            } else if (meal.name.toLowerCase().includes(searchTerm.toLowerCase())){
-                return meal;
-            }
-        }).map((element, index) => (
+        {filter.map((element, index) => (
             <Container key={index}>
                 <Card onClick={() => setPopup(true)} >
                     <MealImg src={element.image} alt={element.image}/>
@@ -52,8 +61,8 @@ export default function MealCard({ category, searchTerm }) {
                             {element.group}
                         </Description>
                         <Prices>
-                            <PromotionPrice>{element.price}</PromotionPrice>
-                            <RegularPrice>{element.price}</RegularPrice>
+                            <PromotionPrice>{formatCurrency(Number(element.price))}</PromotionPrice>
+                            <RegularPrice>{formatCurrency(element.price)}</RegularPrice>
                         </Prices>
                     </MealData>
                 </Card>
@@ -62,7 +71,7 @@ export default function MealCard({ category, searchTerm }) {
                     trigger={popup}
                     setTrigger={setPopup}
                     image={element.image}
-                    title={element.name}
+                    name={element.name}
                     description={element.group}
                     price={element.price}
                 />

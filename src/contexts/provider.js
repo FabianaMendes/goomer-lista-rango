@@ -26,7 +26,6 @@ const RestaurantProvider = ({ children }) => {
             const response = await api.get(`/restaurants/${id}/menu`);
             setRestaurant(restaurant);
             setMenu(response.data);
-            console.log(menu, restaurant);
             localStorage.setItem('restaurant', JSON.stringify(restaurant));
             localStorage.setItem('menu', JSON.stringify(response.data));
         } catch(error) {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRestaurant } from '../../contexts/provider';
 import { useHistory } from 'react-router-dom';
 import api from '../../services/api';
@@ -37,9 +37,9 @@ export default function Home() {
     const filter = restaurantsData.filter((restaurant) => {
         if(searchTerm === "") {
             return restaurantsData;
-        } else if(restaurant.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+        } else if (restaurant.name.toLowerCase().includes(searchTerm.toLowerCase())) {
             return restaurant;
-        } 
+        }
     });
     
 

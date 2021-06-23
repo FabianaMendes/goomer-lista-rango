@@ -58,6 +58,7 @@ export const Description = styled.p`
 
 export const Days = styled.span`
     font-size: 12px;
+    margin: 2px 0;
 
     > strong {
         font-weight: 600;

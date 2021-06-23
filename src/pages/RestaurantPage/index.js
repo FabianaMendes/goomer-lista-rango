@@ -26,13 +26,18 @@ import { FaChevronDown, FaChevronRight } from 'react-icons/fa';
 export default function RestaurantPage() {
 
     const [cardsList, setCardsList] = useState(false);
-    const [searchTerm, setSearchTerm] = useState("");
+    const [searchTerm, setSearchTerm] = useState('');
     const { menu, restaurant } = useRestaurant();
+    const restaurantHours = restaurant.hours;
+    const Weekdays = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
 
+    
+    /**Mapeia todos os grupos */
     const groups = menu.map(item => {
         return item.group;
     });
-
+    
+    /**Reduz todos os grupos encontrados a uma lista, sem repetição de grupos */
     const categories = groups.reduce((group, item) => {
         return group.includes(item) ? group : [...group, item]
     }, []);
@@ -45,9 +50,12 @@ export default function RestaurantPage() {
                 <RestaurantData>
                     <Title>{restaurant.name}</Title>
                     <Description>{restaurant.address}</Description>
-                    <Days>Segunda à Sexta: <strong>1</strong></Days>
-                    <Days>Sábados: <strong>1</strong></Days>
-                    <Days>Domingos e Feriados: <strong>1</strong></Days>
+                    {restaurantHours ? restaurantHours.map((hours, index) => (
+                        <Days key={index}>
+                            {Weekdays[hours.days[0]-1]} à {Weekdays[hours.days[hours.days.length-1]-1]}: 
+                            <strong> {hours.from} às {hours.to} </strong>
+                        </Days>
+                    )) : <Days>Sempre aberto</Days>}
                 </RestaurantData>
             </Container>
             <Aside/>

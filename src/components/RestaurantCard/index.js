@@ -4,34 +4,33 @@ import { Container, StatusTag, Card, Logo, RestaurantData, Title, Subtitle } fro
 
 export default function RestaurantCard({ restaurant, onSelectRestaurant }) {
     const [isOpen, setIsOpen] = useState();
+    const hours = restaurant.hours;
     
     useEffect(() => {
-        const hours = restaurant.hours
-        if(hours === undefined || hours.length === 0) {
-            setIsOpen(true)
+        if(!hours) {
+            setIsOpen(true);
         } else { 
-            const status = hours.map(hour => {
-                const today = new Date()
-                const hourNow = today.getHours()
-                const weekdayNow = (today.getDay()+1)
-                let days = hour.days
+            const today = new Date();
+            const hourNow = today.getHours();
+            
+            hours.map(hour => {
+                const hourFrom = parseInt(hour.from);
+                const hourTo = parseInt(hour.to);
 
-                if(days.includes(weekdayNow)){
-                    const formatedHourFrom = parseInt(hour.from)
-                    const formatedHourTo = parseInt(hour.to)
-                    console.log(restaurant.id, days, formatedHourFrom, formatedHourTo, hourNow)
-                    if(formatedHourFrom < hourNow && formatedHourTo > hourNow){
-                        return setIsOpen(true)
+                if((hour.days).includes(today.getDay()+1)){
+                    if((hourFrom <= hourNow) && (hourTo > hourNow)){
+                        setIsOpen(true);
                     } else {
-                        return setIsOpen(false)
+                        setIsOpen(false);
                     }
-                } 
+                }
+                return(isOpen)
             })
         }
-    },[]);
+    },[hours, isOpen]);
 
     const openTag = useMemo(() => {
-        return isOpen === true 
+        return isOpen 
         ? {
             title: 'Aberto agora',
             color: '#2B0D61'

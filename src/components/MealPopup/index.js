@@ -16,7 +16,7 @@ import {
 
 import { FaTimes } from 'react-icons/fa';
 
-export default function MealPopup({ trigger, setTrigger, title, image, description, price }) {
+export default function MealPopup({ trigger, setTrigger, image, name, description, price }) {
 
     const [counter, setCounter] = useState(1);
     
@@ -33,18 +33,18 @@ export default function MealPopup({ trigger, setTrigger, title, image, descripti
     } 
 
     return (trigger) ? (
-        <PopUp >
+        <PopUp>
             <Card>
                 <button onClick={() => setTrigger(false)}>
                     <FaTimes/>
                 </button>
                 <MealImg src={image} alt={image}/>
                 <MealData>
-                    <Title>{title}</Title>
+                    <Title>{name}</Title>
                     <Description>
                         {description}
                     </Description>
-                    <Price>{price}</Price>
+                    <Price>{formatCurrency(price)}</Price>
                 </MealData>
                 <Footer>
                     <Counter>
@@ -53,7 +53,7 @@ export default function MealPopup({ trigger, setTrigger, title, image, descripti
                         <button onClick={handleEncrease}> + </button>
                     </Counter>
                     <AddToCart onClick={() => setTrigger(false)}>
-                        Adicionar <span>{price}</span>
+                        Adicionar <span>{formatCurrency(price)}</span>
                     </AddToCart>
                 </Footer>
             </Card>
