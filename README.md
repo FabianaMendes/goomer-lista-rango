@@ -4,9 +4,9 @@
 
 <p align="center" >  
     <a href="#descrição">Descrição</a> • 
-    <a href="#desafios encontrados">Desafios Encontrados</a> • 
+    <a href="#desafios">Desafios</a> • 
     <a href="#status">Status</a> • 
-    <a href="#como rodar o app localmente">Como rodar o App localmente</a> • 
+    <a href="#como_rodar_o_app_localmente">Como rodar o App localmente</a> • 
     <a href="#tecnologias">Tecnologias</a> • 
     <a href="#versão">Versão</a> • 
     <a href="#conclusão">Conclusão</a>
