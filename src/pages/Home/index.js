@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useRestaurant } from '../../contexts/provider';
 import { useHistory } from 'react-router-dom';
-import api from '../../services/api';
+import { useRestaurant } from '../../contexts/provider';
+import { loadRestaurants } from '../../services';
 
 import Input from '../../components/Input';
 import RestaurantCard from '../../components/RestaurantCard';
@@ -17,12 +17,13 @@ export default function Home() {
 
     /**Busca a lista de restaurantes sempre que a página é recarregada */
     useEffect(() => {
-        async function loadRestaurants() {
-            const response = await api.get('/restaurants');
-            setRestaurantsData(response.data);
-        }
-        loadRestaurants();
+        loadRestaurants()
+            .then(response => setRestaurantsData(response.data))
+            .catch(() => {
+                alert('Erro ao listar restaurantes');
+        })
     }, []);
+
     
     /**Ao clicar, envia as informações do restaurante escolhido para o provider */
     function handleSelectRestaurant(restaurant) {

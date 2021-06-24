@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
-import api from '../services/api';
+import axios from 'axios';
+import API_URL from '../services/api';
 
 const RestaurantContext = createContext();
 
@@ -23,7 +24,7 @@ const RestaurantProvider = ({ children }) => {
         localStorage.removeItem('restaurant')
         localStorage.removeItem('menu')
         try {
-            const response = await api.get(`/restaurants/${id}/menu`);
+            const response = await axios.get(`${API_URL}/restaurants/${id}/menu`);
             setRestaurant(restaurant);
             setMenu(response.data);
             localStorage.setItem('restaurant', JSON.stringify(restaurant));

@@ -1,8 +1,6 @@
 import axios from 'axios';
+import API_URL from './api';
 
-//const API_URL = process.env.REACT_APP_API_URL;
-export const API_URL = 'https://challange.goomer.com.br';
-
-export function fetchRestaurants() {
-    return axios.get(`${API_URL}/restaurants`)
+export async function loadRestaurants() {
+    return await axios.get(`${API_URL}/restaurants`)
 }

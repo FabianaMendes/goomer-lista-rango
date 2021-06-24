@@ -77,16 +77,13 @@ export default function MealCard({ category, searchTerm }) {
                 })  
             }
         })
-        
-         
     },[hasPromotion]);
     
    
     return (
-        <>
-        {filter.map((meal, index) => (
+        filter.map((meal, index) => (
             <Container key={index}>
-                <Card onClick={() => setPopup(true)} >
+                <Card onClick={() => setPopup(true)}>
                     <MealImg src={meal.image} alt={meal.image}/>
                     <MealData>
                         <MealTitle>{meal.name}</MealTitle>
@@ -108,16 +105,12 @@ export default function MealCard({ category, searchTerm }) {
                     </MealData>
                 </Card>
                 <MealPopup
-                    key={meal.name}
                     trigger={popup}
                     setTrigger={setPopup}
-                    image={meal.image}
-                    name={meal.name}
-                    description={meal.group}
-                    price={meal.price}
+                    meal={meal}
                 />
             </Container>
-        ))}
-        </>
-    )
-};
+        ))
+        
+    );
+}
