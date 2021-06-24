@@ -45,7 +45,8 @@ export default function MealCard({ category, searchTerm }) {
             return mealList;
         } else if (meal.name.toLowerCase().includes(searchTerm.toLowerCase())){
             return meal;
-        }
+        } 
+        return null;
     });
 
 
@@ -63,21 +64,19 @@ export default function MealCard({ category, searchTerm }) {
 
                     promotionTime.map(hour => {
                         if((hour.days).includes(today.getDay()+1)){
-                            console.log('hoje tem!')
                             if((hour.from <= hourNow) && (hour.to > hourNow)){
                                 console.log('hoje tem e está na hora!')
                                 setHasPromotion(true);
-                            } else {
-                                console.log('hoje tem mas está fora do horário')
-                            }
-                        } else {
-                            console.log('hoje não tem')
-                        }
+                            } 
+                        } 
+                        return(hasPromotion)
                     })
+                    return null;
                 })  
             }
+            return null;
         })
-    },[hasPromotion]);
+    },[hasPromotion, mealList]);
     
    
     return (

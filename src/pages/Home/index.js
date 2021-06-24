@@ -18,12 +18,21 @@ export default function Home() {
     /**Busca a lista de restaurantes sempre que a página é recarregada */
     useEffect(() => {
         loadRestaurants()
-            .then(response => setRestaurantsData(response.data))
-            .catch(() => {
-                alert('Erro ao listar restaurantes');
+        .then(response => {
+            setRestaurantsData(response.data)
+        })
+        .catch(() => {
+            alert('Erro ao listar restaurantes');
         })
     }, []);
 
+    /**Atualiza a lista de restaurantes a cada minuto*/
+    setTimeout(() => {
+        loadRestaurants()
+        .then(response => {
+            setRestaurantsData(response.data)
+        })
+    }, 60000);
     
     /**Ao clicar, envia as informações do restaurante escolhido para o provider */
     function handleSelectRestaurant(restaurant) {
@@ -41,6 +50,7 @@ export default function Home() {
         } else if (restaurant.name.toLowerCase().includes(searchTerm.toLowerCase())) {
             return restaurant;
         }
+        return null;
     });
     
 
