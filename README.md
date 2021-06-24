@@ -23,7 +23,7 @@ Desafio proposto pela *Goomer*
 
 
 
-## Desafios Encontrados
+## Desafios
 Tive bastante dificuldade nesses três casos pois foi a primeira vez que apliquei soluções neste sentido, com mais variáveis, camadas de dados e sem constância entre elas. Mas foi um excelente aprendizado! Me inspirou a fazer mais projetos neste sentido para praticar!
 - A busca e atualização constante dos status de aberto/fechado dos restaurantes.
 - A busca e atualização por promoções ativas no momento.
