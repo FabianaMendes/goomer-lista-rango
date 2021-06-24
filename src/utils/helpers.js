@@ -1,7 +1,11 @@
 export function formatCurrency(price) {
-    return price.toLocaleString('pt-br', {
-        style: 'currency', 
-        currency: 'BRL',
-        minimumFractionDigits: 2
-    });
+    if(!price) {
+        return "Valor sob consulta"
+    } else {
+        return price.toLocaleString('pt-br', {
+            style: 'currency', 
+            currency: 'BRL',
+            minimumFractionDigits: 2
+        });
+    }
 }

@@ -1,70 +1,107 @@
-# Getting Started with Create React App
+Challenge - Developer Frontend
+Você provavelmente já está participando do nosso processo seletivo, mas se você caiu aqui por acaso, leia esse documento até o final e se você se interessar, pode começar o processo à partir daqui =]
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Não é esperado que todas as pessoas consigam realizar esse desafio por completo, já que é destinado a todos os níveis de carreira.
 
-## Available Scripts
+A avaliação será baseada na sua capacidade de escrever um código simples, de fácil manutenção, e pela quantidade de funcionalidades que você entregar.
 
-In the project directory, you can run:
+Instruções
+Nome do Projeto: Goomer Lista Rango
+Objetivo do Projeto: Criar uma aplicação Web responsiva que consulte nossa API e exiba uma lista de restaurantes e o cardápio de cada um deles.
+Tecnologia: React.
+User Interface: Você deve usar esse link como referência de UI durante o desenvolvimento.
+Entregáveis: Crie um repositório pessoal para esse projeto, siga as instruções abaixo e responda e-mail recebido com link do repositório. Caso você resolveu fazer o teste por conta própria pode enviar para selecao.tech@goomer.com.br.
+Desafio
+Consulte a API disponibilizada para buscar as informações.
+Crie uma tela para exibir a lista de restaurantes:
+O usuário deve ser capaz de buscar por estabelecimento.
+Indique se cada um deles está aberto ou fechado sem ser necessário recarregar ou reabrir a página.
+Para cada restaurante, deve ser exibido os horários de funcionamento, as promoções ativas no momento e o cardápio.
+O restaurante deve atualizar o status de aberto/fechado, de acordo com o horário de funcionamento, sem ser necessário recarregar ou reabrir a página.
+Crie uma tela para exibir os produto do cardápio de cada um dos restaurantes:
+O usuário deve ser capaz de buscar os produtos.
+Para os produtos com promoção ativa, deve ser exibido o valor original e o valor promocional.
+As promoções ativas e o valor promocional devem ser atualizados na interface, de acordo com o horário, sem a necessidade de recarregar ou reabrir a página.
+Formato de horários
+É necessário tratar os campos que indicam horários de funcionamento.
+Os campos from e to possuem o formato HH:mm.
+Caso o campo to possua um horário anterior ao valor de from, deve-se considerar que o horário se estende até o horário contido em to do próximo dia. Por exemplo, se from for 19:00 e to for 02:00, o horário a ser considerado é das 19h do dia atual até às 02h do dia seguinte.
+O campo days guarda os dias da semana em que o horário é válido. Sendo Domingo o valor 1 e Sábado o valor 7. Os horários possuem intervalo mínimo de 15 minutos.
+O que nós vamos avaliar
+Vamos avaliar a qualidade do código, legibilidade e a quantidade de funcionalidades implementadas.
+Você é livre para tomar as decisões técnicas com as quais você se sente mais confortável. Apenas esteja pronto para explicar as razões que fundamentaram suas escolhas =]
+Inclua um arquivo README que possua:
+desafios/problemas com os quais você se deparou durante a execução do projeto.
+maneiras através das quais você pode melhorar a aplicação, seja em performance, estrutura ou padrões.
+todas as intruções necessárias para que qualquer pessoa consiga rodar sua aplicação sem maiores problemas.
+Dicas
+Documente seu projeto em arquivos markdown explicando a estrutura, processo de setup e requisitos.
+Tenha sempre um mindset de usabilidade, acessibilidade e colaboração.
+A organização das branches e os commits no repositório falam muito sobre como você organiza seu trabalho.
+Você pode utilizar bibliotecas de componentes visuais;
+O material de UI/UX que fornecemos deve servir como uma referência, você não precisa necessariamente segui-lo à risca. No entanto, quanto mais próximo, melhor =]
+Os testes unitários são opcionais porém são mais do que desejados.
+O design/estrutura do código da aplicação deve ser production ready.
+Tenha em mente os conceitos de SOLID, KISS, YAGNI e DRY.
+Use boas práticas de programação.
+API que você deve consumir
+https://challange.goomer.com.br é nossa API REST JSON para esse desafio e seus endpoints estão disponíveis publicamente.
 
-### `npm start`
+Examplos de consulta na API:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Busca de restaurantes - http://challange.goomer.com.br/restaurants
+GET: http://challange.goomer.com.br/restaurants
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Formato de Resposta:
+[
+  {
+    "id": Number,
+    "name": String,
+    "address": String,
+    "image": String,
+    "hours:[
+      {
+        "from": String,
+        "to": String,
+        "days": [Number]
+      }
+    ]
+  }
+]
+Busca de cardápio de um restaurante - http://challange.goomer.com.br/restaurants/{id}/menu
+GET: http://challange.goomer.com.br/restaurants/{id}/menu
 
-### `npm test`
+Formato de resposta:
+[
+  {
+    "restaurantId": Number,
+    "name": String,
+    "image": String,
+    "price": Number,
+    "group": String,
+    "sales": [
+      {
+        "description": String,
+        "price": Number,
+        "hours": [
+          {
+            "from": String,
+            "to": String,
+            "days": [Number]
+          }
+        ]
+      }
+    ]
+  }
+]
+FAQ
+Posso utilizar frameworks/bibliotecas?
+Sim.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Quanto tempo eu tenho ?
+Quanto mais tempo você demorar, mais críticos seremos na sua avaliação =]
 
-### `npm run build`
+React, Angular ou Vue?
+Você precisa implementar em React.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Happy coding

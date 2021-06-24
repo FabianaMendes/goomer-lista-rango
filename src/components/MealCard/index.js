@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRestaurant } from '../../contexts/provider';
 import { formatCurrency } from '../../utils/helpers';
 
@@ -11,7 +11,7 @@ import {
     MealTitle, 
     Description, 
     Prices,
-    PromotionPrice, 
+    CurrentPrice, 
     RegularPrice  
 } from './styles';
 
@@ -22,6 +22,7 @@ import { FaAward } from 'react-icons/fa';
 export default function MealCard({ category, searchTerm }) {
 
     const [popup, setPopup] = useState(false);
+    const [hasPromotion, setHasPromotion] = useState(false);
     const { menu } = useRestaurant();
 
     /**Compara a categoria recebida com a da refeição, se for igual retorna a refeição*/
@@ -46,34 +47,74 @@ export default function MealCard({ category, searchTerm }) {
             return meal;
         }
     });
+
+
+    useEffect(() => {
+        mealList.map(item => {
+            const sales = item.sales
+            if(!sales) {
+                setHasPromotion(false);
+            } else { 
+                const today = new Date();
+                const hourNow = today.getHours();
+
+                sales.map(sale => {
+                    const promotionTime = sale.hours
+
+                    promotionTime.map(hour => {
+                        if((hour.days).includes(today.getDay()+1)){
+                            console.log('hoje tem!')
+                            if((hour.from <= hourNow) && (hour.to > hourNow)){
+                                console.log('hoje tem e está na hora!')
+                                setHasPromotion(true);
+                            } else {
+                                console.log('hoje tem mas está fora do horário')
+                            }
+                        } else {
+                            console.log('hoje não tem')
+                        }
+                    })
+                })  
+            }
+        })
+        
+         
+    },[hasPromotion]);
     
    
     return (
         <>
-        {filter.map((element, index) => (
+        {filter.map((meal, index) => (
             <Container key={index}>
                 <Card onClick={() => setPopup(true)} >
-                    <MealImg src={element.image} alt={element.image}/>
+                    <MealImg src={meal.image} alt={meal.image}/>
                     <MealData>
-                        <TagPromo><FaAward/>Promo almoço</TagPromo>
-                        <MealTitle>{element.name}</MealTitle>
+                        <MealTitle>{meal.name}</MealTitle>
                         <Description>
-                            {element.group}
+                            {meal.group}
                         </Description>
-                        <Prices>
-                            <PromotionPrice>{formatCurrency(Number(element.price))}</PromotionPrice>
-                            <RegularPrice>{formatCurrency(element.price)}</RegularPrice>
-                        </Prices>
+                        {hasPromotion ? meal.sales.map((sale, index) => (
+                            <Prices key={index}>
+                                <TagPromo ><FaAward/>{sale.description}</TagPromo>
+                                <CurrentPrice>{formatCurrency(sale.price)}</CurrentPrice>
+                                <RegularPrice>{formatCurrency(meal.price)}</RegularPrice>
+                            </Prices>
+                        )) : 
+                            <Prices>
+                                <CurrentPrice>{formatCurrency(meal.price)}</CurrentPrice>
+                            </Prices>
+                        }
+                            
                     </MealData>
                 </Card>
                 <MealPopup
-                    key={element.name}
+                    key={meal.name}
                     trigger={popup}
                     setTrigger={setPopup}
-                    image={element.image}
-                    name={element.name}
-                    description={element.group}
-                    price={element.price}
+                    image={meal.image}
+                    name={meal.name}
+                    description={meal.group}
+                    price={meal.price}
                 />
             </Container>
         ))}

@@ -14,7 +14,7 @@ import {
     Description, 
     Days,
     RestaurantMealList,
-    OptionsContainer,
+    MenuContainer,
     MealCategories, 
     CategoryTitle, 
     MealCardsContainer 
@@ -66,21 +66,20 @@ export default function RestaurantPage() {
                     width="832px"
                     onChange={(event) => setSearchTerm(event.target.value)}
                 />
-                <OptionsContainer>
+                <MenuContainer>
                     {categories.map((category, index) =>(
                         <MealCategories key={index}>
                             <CategoryTitle onClick={() => setCardsList(!cardsList)}>
                                 {category}
-                                <button>
-                                    {cardsList ? <FaChevronDown/> : <FaChevronRight/>}
-                                </button>
+                                {cardsList ? <FaChevronDown/> : <FaChevronRight/>}
                             </CategoryTitle>
-                            <MealCardsContainer className={cardsList ? "" : "hidden"}>
+                            
+                            <MealCardsContainer id={category} className={cardsList ? "" : "hidden"}>
                                 <MealCard category={category} searchTerm={searchTerm}/> 
                             </MealCardsContainer>
                         </MealCategories>
                     ))}
-                </OptionsContainer>
+                </MenuContainer>
             </RestaurantMealList>
         </GridLayout>
     );

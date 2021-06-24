@@ -69,7 +69,7 @@ export const RestaurantMealList = styled.div`
     grid-area: LC;
 `;
 
-export const OptionsContainer = styled.div`
+export const MenuContainer = styled.div`
     width: 832px;
 
     margin: 24px 0;
@@ -83,7 +83,7 @@ export const MealCategories = styled.div`
     }
 `;
 
-export const CategoryTitle = styled.div`
+export const CategoryTitle = styled.button`
     width: 100%;
     padding: 12px 33px 12px 13px;
 
@@ -92,17 +92,9 @@ export const CategoryTitle = styled.div`
 
     border-bottom: 1px solid ${props => props.theme.colors.black};
     color: ${props => props.theme.colors.black};
+    background-color: ${props => props.theme.colors.white};
 
     font-weight: 600;
-
-    &:hover {
-        cursor: pointer;
-    }
-
-    > button {
-        background-color: transparent;
-        color: ${props => props.theme.colors.black};
-    }
 `;
 
 export const MealCardsContainer = styled.div`

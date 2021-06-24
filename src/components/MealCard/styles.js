@@ -40,6 +40,19 @@ export const MealData = styled.div`
     justify-content: space-between;
 `;
 
+export const MealTitle = styled.h1`
+    font-size: 16px;
+    font-weight: 500;
+
+    width: 60%;
+`;
+
+export const Description = styled.p`
+    font-size: 12px;
+`;
+
+export const Prices = styled.div``;
+
 export const TagPromo = styled.div`
     position: absolute;
 
@@ -65,20 +78,7 @@ export const TagPromo = styled.div`
     }
 `;
 
-export const MealTitle = styled.h1`
-    font-size: 16px;
-    font-weight: 500;
-
-    width: 60%;
-`;
-
-export const Description = styled.p`
-    font-size: 12px;
-`;
-
-export const Prices = styled.div``;
-
-export const PromotionPrice = styled.span`
+export const CurrentPrice = styled.span`
     font-size: 16px;
     font-weight: 500;
 

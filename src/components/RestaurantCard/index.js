@@ -8,24 +8,20 @@ export default function RestaurantCard({ restaurant, onSelectRestaurant }) {
     
     useEffect(() => {
         if(!hours) {
-            setIsOpen(true);
+            setIsOpen(true)
         } else { 
-            const today = new Date();
-            const hourNow = today.getHours();
-            
             hours.map(hour => {
-                const hourFrom = parseInt(hour.from);
-                const hourTo = parseInt(hour.to);
-
+                const today = new Date()
+                const hourNow = today.getHours()
+                const hourFrom = parseInt(hour.from)
+                const hourTo = parseInt(hour.to)
                 if((hour.days).includes(today.getDay()+1)){
-                    if((hourFrom <= hourNow) && (hourTo > hourNow)){
-                        setIsOpen(true);
-                    } else {
-                        setIsOpen(false);
+                    if((hourFrom <= hourNow) && (hourTo > hourNow)) {
+                        setIsOpen(true)
                     }
                 }
                 return(isOpen)
-            })
+            }) 
         }
     },[hours, isOpen]);
 
