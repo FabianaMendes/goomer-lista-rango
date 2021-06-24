@@ -41,6 +41,7 @@ Tive bastante dificuldade nesses três casos pois foi a primeira vez que aplique
 - Necessário tratar ausência de fotos do backend (se acaso não possuir fotos do estabelecimento ou das refeições, exibir um padrão)
 - Necessário melhora nas funções de captura de estado aberto/fechado e promoções
 - Quando o cliente buscar pelo nome da refeição na página do restaurante, devolver a resposta fora das categorias
+- Melhorar a responsividade para dispositivos móveis
 - TESTES! Claro... =)
 
 

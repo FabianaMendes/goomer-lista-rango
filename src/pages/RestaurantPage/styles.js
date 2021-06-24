@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const GridLayout = styled.div`
     display: grid;
-    grid-template-columns: auto 280px;
+    grid-template-columns: 80% 20%;
     grid-template-rows: 185px auto;
     grid-template-areas: 
     'HD HD'
@@ -70,7 +70,7 @@ export const RestaurantMealList = styled.div`
 `;
 
 export const MenuContainer = styled.div`
-    width: 832px;
+    width: 90%;
 
     margin: 24px 0;
 `;

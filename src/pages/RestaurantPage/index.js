@@ -63,7 +63,7 @@ export default function RestaurantPage() {
                 <Input 
                     inputColor="#E6E6E6" 
                     title="Buscar no cardápio"
-                    width="832px"
+                    width="90%"
                     onChange={(event) => setSearchTerm(event.target.value)}
                 />
                 <MenuContainer>

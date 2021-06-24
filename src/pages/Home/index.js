@@ -61,7 +61,7 @@ export default function Home() {
                 <Input 
                     inputColor="#FBFBFB" 
                     title="Buscar estabelecimento"
-                    width="840px"
+                    width="62%"
                     onChange={(event) => setSearchTerm(event.target.value)}
                 />
             </Header>

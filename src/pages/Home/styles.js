@@ -24,7 +24,7 @@ export const Title = styled.h1`
 export const ListContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     column-gap: 40px;
     row-gap: 34px;
 
