@@ -1,107 +1,88 @@
-Challenge - Developer Frontend
-Você provavelmente já está participando do nosso processo seletivo, mas se você caiu aqui por acaso, leia esse documento até o final e se você se interessar, pode começar o processo à partir daqui =]
+<h1 align="center">Challenge - Developer Frontend</h1>
 
-Não é esperado que todas as pessoas consigam realizar esse desafio por completo, já que é destinado a todos os níveis de carreira.
+<img align="center" alt="logo-goomer" src="./src/assets/logo.png">
 
-A avaliação será baseada na sua capacidade de escrever um código simples, de fácil manutenção, e pela quantidade de funcionalidades que você entregar.
+<p align="center" >  
+    <a href="#descrição">Descrição</a> • 
+    <a href="#desafios">Desafios Encontrados</a> • 
+    <a href="#status">Status</a> • 
+    <a href="#como rodar o app">Como rodar o App localmente</a> • 
+    <a href="#tecnologias">Tecnologias</a> • 
+    <a href="#versão">Versão</a> • 
+    <a href="#conclusão">Conclusão</a>
+</p>
 
-Instruções
-Nome do Projeto: Goomer Lista Rango
-Objetivo do Projeto: Criar uma aplicação Web responsiva que consulte nossa API e exiba uma lista de restaurantes e o cardápio de cada um deles.
-Tecnologia: React.
-User Interface: Você deve usar esse link como referência de UI durante o desenvolvimento.
-Entregáveis: Crie um repositório pessoal para esse projeto, siga as instruções abaixo e responda e-mail recebido com link do repositório. Caso você resolveu fazer o teste por conta própria pode enviar para selecao.tech@goomer.com.br.
-Desafio
-Consulte a API disponibilizada para buscar as informações.
-Crie uma tela para exibir a lista de restaurantes:
-O usuário deve ser capaz de buscar por estabelecimento.
-Indique se cada um deles está aberto ou fechado sem ser necessário recarregar ou reabrir a página.
-Para cada restaurante, deve ser exibido os horários de funcionamento, as promoções ativas no momento e o cardápio.
-O restaurante deve atualizar o status de aberto/fechado, de acordo com o horário de funcionamento, sem ser necessário recarregar ou reabrir a página.
-Crie uma tela para exibir os produto do cardápio de cada um dos restaurantes:
-O usuário deve ser capaz de buscar os produtos.
-Para os produtos com promoção ativa, deve ser exibido o valor original e o valor promocional.
-As promoções ativas e o valor promocional devem ser atualizados na interface, de acordo com o horário, sem a necessidade de recarregar ou reabrir a página.
-Formato de horários
-É necessário tratar os campos que indicam horários de funcionamento.
-Os campos from e to possuem o formato HH:mm.
-Caso o campo to possua um horário anterior ao valor de from, deve-se considerar que o horário se estende até o horário contido em to do próximo dia. Por exemplo, se from for 19:00 e to for 02:00, o horário a ser considerado é das 19h do dia atual até às 02h do dia seguinte.
-O campo days guarda os dias da semana em que o horário é válido. Sendo Domingo o valor 1 e Sábado o valor 7. Os horários possuem intervalo mínimo de 15 minutos.
-O que nós vamos avaliar
-Vamos avaliar a qualidade do código, legibilidade e a quantidade de funcionalidades implementadas.
-Você é livre para tomar as decisões técnicas com as quais você se sente mais confortável. Apenas esteja pronto para explicar as razões que fundamentaram suas escolhas =]
-Inclua um arquivo README que possua:
-desafios/problemas com os quais você se deparou durante a execução do projeto.
-maneiras através das quais você pode melhorar a aplicação, seja em performance, estrutura ou padrões.
-todas as intruções necessárias para que qualquer pessoa consiga rodar sua aplicação sem maiores problemas.
-Dicas
-Documente seu projeto em arquivos markdown explicando a estrutura, processo de setup e requisitos.
-Tenha sempre um mindset de usabilidade, acessibilidade e colaboração.
-A organização das branches e os commits no repositório falam muito sobre como você organiza seu trabalho.
-Você pode utilizar bibliotecas de componentes visuais;
-O material de UI/UX que fornecemos deve servir como uma referência, você não precisa necessariamente segui-lo à risca. No entanto, quanto mais próximo, melhor =]
-Os testes unitários são opcionais porém são mais do que desejados.
-O design/estrutura do código da aplicação deve ser production ready.
-Tenha em mente os conceitos de SOLID, KISS, YAGNI e DRY.
-Use boas práticas de programação.
-API que você deve consumir
-https://challange.goomer.com.br é nossa API REST JSON para esse desafio e seus endpoints estão disponíveis publicamente.
 
-Examplos de consulta na API:
+## Descrição
+Desafio proposto pela *Goomer*
+- Projeto iniciado em 17/jun/2021 e entregue em 24/jun/2021 (8 dias de desenvolvimento)
+- Objetivo: Criar uma aplicação Web responsiva que consulte a API disponibilizada e exiba uma lista de restaurantes com seu status (aberto/fechado) e o cardápio de cada um deles, com as promoções disponíveis para o dia e horário atual.
+- Foi utilizado [esse link](https://xd.adobe.com/spec/f6e71782-ebba-4573-6f7a-005a1a6d391f-80d6/grid) como referência para a construção da interface de usuário.
+- [Api disponibilizada](https://challange.goomer.com.br/) 
+- Você pode conferir o app em produção clicando [aqui!](https://goomer-lista-rango-fabimendes.netlify.app/) 
 
-Busca de restaurantes - http://challange.goomer.com.br/restaurants
-GET: http://challange.goomer.com.br/restaurants
 
-Formato de Resposta:
-[
-  {
-    "id": Number,
-    "name": String,
-    "address": String,
-    "image": String,
-    "hours:[
-      {
-        "from": String,
-        "to": String,
-        "days": [Number]
-      }
-    ]
-  }
-]
-Busca de cardápio de um restaurante - http://challange.goomer.com.br/restaurants/{id}/menu
-GET: http://challange.goomer.com.br/restaurants/{id}/menu
 
-Formato de resposta:
-[
-  {
-    "restaurantId": Number,
-    "name": String,
-    "image": String,
-    "price": Number,
-    "group": String,
-    "sales": [
-      {
-        "description": String,
-        "price": Number,
-        "hours": [
-          {
-            "from": String,
-            "to": String,
-            "days": [Number]
-          }
-        ]
-      }
-    ]
-  }
-]
-FAQ
-Posso utilizar frameworks/bibliotecas?
-Sim.
+## Desafios Encontrados
+Tive bastante dificuldade nesses três casos pois foi a primeira vez que apliquei soluções neste sentido, com mais variáveis, camadas de dados e sem constância entre elas. Mas foi um excelente aprendizado! Me inspirou a fazer mais projetos neste sentido para praticar!
+- A busca e atualização constante dos status de aberto/fechado dos restaurantes.
+- A busca e atualização por promoções ativas no momento.
+- Necessidade de tratar dados da api, como ausência de fotos, ausência de horários de funcionamento e ausência de valores de refeições.
 
-Quanto tempo eu tenho ?
-Quanto mais tempo você demorar, mais críticos seremos na sua avaliação =]
 
-React, Angular ou Vue?
-Você precisa implementar em React.
 
-Happy coding
+## Status
+
+🚧⛔  Em construção - Não finalizado  ⛔🚧 
+
+*Melhorias/Pendências*
+- Necessário correção de bug em pop-ups que não estão sendo exibidos corretamente.
+- Necessário correção na exibição das listas de categorias de cada restaurante, que abrem todas ao click enquanto deveria abrir só a correspondente.
+- Necessário tratar ausência de fotos do backend (se acaso não possuir fotos do estabelecimento ou das refeições, exibir um padrão)
+- Necessário melhora nas funções de captura de estado aberto/fechado e promoções
+- Quando o cliente buscar pelo nome da refeição na página do restaurante, devolver a resposta fora das categorias
+- TESTES! Claro... =)
+
+
+
+## Como rodar o App localmente
+
+- Abra o terminal de comando e clone o repositório:
+``` $ git clone https://github.com/FabianaMendes/goomer-lista-rango ```
+- Acesse a pasta do projeto pelo terminal: 
+``` $ cd goomer-lista-rango ```
+- Instale as dependências:
+``` $ npm install ```
+- Para abrir o projeto no seu editor de código: 
+``` $ code . ``` 
+- Para rodar a aplicação localmente:
+``` $ npm start ```
+_O servidor irá iniciar automaticamente na porta:3000 - acesse [http://localhost:3000](http://localhost:3000)
+Para parar a aplicação pressione Ctrl + c_
+
+
+
+## Tecnologias
+
+As seguintes ferramentas foram utilizadas na construção desse projeto:
+
+**Web-app ([React](https://pt-br.reactjs.org/))**
+- [React Router](https://reactrouter.com/web/guides/quick-start)
+- [Axios](https://www.npmjs.com/package/axios)
+- [Styled Components](https://styled-components.com/)
+- [React Icons](https://www.npmjs.com/package/react-icons)
+
+**Utilities**
+- Editor: [Visual Studio Code](https://code.visualstudio.com/)
+- Package Manager: [Npm](https://www.npmjs.com/)
+- Google Fonts: [Montserrat](https://fonts.google.com/specimen/Montserrat?query=monts)
+
+
+
+## Versão 
+<p>Versão 1.0</p>
+
+
+## Conclusão
+No geral, foi muito divertido e muito prazeroso o desenvolvimento do desafio! No dia em que o recebi fiquei bastante empolgada e o entrego com a mesma sensação, embora não finalizado. Em alguns momentos do desenvolvimento desse projeto pensei que pudesse ser mais fluido se tivesse utilizado typescript. Creio que a tipagem poderia ter evitado muitos erros de console e quebras de execução. Quero refazê-lo em typescript para perceber as dificuldades e vantagens de cada linguagem.
+Aprendi muita coisa nova. A cada desafio sinto uma evolução bem bacana. Em breve, após finalização do processo, quero dar continuidade e terminar o app, com todas as funcionalidades propostas, a título de aprendizado. 
